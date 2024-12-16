@@ -1,0 +1,27 @@
+package budhioct.dev.student;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+    private final StudentRepository repository;
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.repository = studentRepository;
+    }
+
+    @Transactional
+    public void saveStudent(StudentEntity student) {
+        repository.save(student);
+    }
+
+    @Transactional(readOnly = true)
+    public List<StudentEntity> findAllStudents() {
+        return repository.findAll();
+    }
+    
+}
