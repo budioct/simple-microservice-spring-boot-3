@@ -22,4 +22,6 @@ public class StudentEntity {
     private String lastName;
     @Column(name = "email", unique = true)
     private String email;
+    @Column(name = "school_id")
+    private int schoolId;
 }

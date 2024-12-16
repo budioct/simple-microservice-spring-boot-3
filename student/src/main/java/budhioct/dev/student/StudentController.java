@@ -33,4 +33,12 @@ public class StudentController {
         return ResponseEntity.ok(service.findAllStudents());
     }
 
+    @GetMapping(
+            path = "/school/{school-id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<StudentEntity>> findAllStudents(@PathVariable(name = "school-id") long schoolId) {
+        return ResponseEntity.ok(service.findAllStudentsBySchool(schoolId));
+    }
+
 }

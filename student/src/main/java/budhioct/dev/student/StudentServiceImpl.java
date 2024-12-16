@@ -22,4 +22,9 @@ public class StudentServiceImpl implements StudentService {
         return repository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public List<StudentEntity> findAllStudentsBySchool(long schoolId) {
+        return repository.findAllBySchoolId(schoolId);
+    }
+
 }
