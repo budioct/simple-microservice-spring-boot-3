@@ -1,0 +1,9 @@
+package budhioct.dev.school;
+
+import java.util.List;
+
+public interface Service {
+    void saveSchool(SchoolEntity school);
+    List<SchoolEntity> findAllSchools();
+    
+}

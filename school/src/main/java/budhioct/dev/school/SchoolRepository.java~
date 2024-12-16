@@ -1,0 +1,4 @@
+package budhioct.dev.school;
+
+public interface SchoolRepository {
+}
