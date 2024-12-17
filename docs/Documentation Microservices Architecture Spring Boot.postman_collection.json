@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "0495dfd4-b379-49f1-99be-d2d8eb9f2f5c",
+		"name": "Documentation Microservices Architecture Spring Boot",
+		"description": "This project demonstrates a modern microservices architecture built with Java Spring Boot, designed for scalability, reliability, and ease of maintenance. It leverages **Eureka** for seamless service discovery, **Spring Cloud Gateway** for intelligent API routing, and a **centralized configuration server** for efficient configuration management across all services.\n\nTo ensure robust observability and troubleshooting, the application integrates **Zipkin** for distributed tracing and logging, providing valuable insights into service communication and performance metrics.\n\n- Created by Budhi Octaviansyah\n    \n- GitHub : [https://github.com/budioct](https://github.com/budioct)\n    \n- Email : [budioct@gmail.com](https://budioct@gmail.com)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7284698"
+	},
+	"item": [
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"schoolId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						},
+						"description": "The API endpoint allows you to create a new student by sending an HTTP POST request to the specified URL. The request should include the first name, last name, email, and school ID of the student in the request body.\n\n### Request Body\n\n- `firstName` (string): The first name of the student.\n    \n- `lastName` (string): The last name of the student.\n    \n- `email` (string): The email address of the student.\n    \n- `schoolId` (string): The ID of the school to which the student belongs.\n    \n\n### Response\n\nThe response to this request is expected to be in JSON format. However, the last execution returned a status code of 201 (Created) with a Content-Type of text/xml. The response body was null.\n\n### JSON Schema for Response\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {},\n  \"additionalProperties\": true\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						},
+						"description": "The endpoint retrieves a list of students from the server. The response returned is a JSON array containing student objects with the following properties:\n\n- id (number): The unique identifier for the student.\n    \n- firstName (string): The first name of the student.\n    \n- lastName (string): The last name of the student.\n    \n- email (string): The email address of the student.\n    \n- schoolId (number): The unique identifier of the school to which the student belongs.\n    \n\nHere is the JSON schema for the response:\n\n``` json\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"id\": {\n        \"type\": \"number\"\n      },\n      \"firstName\": {\n        \"type\": \"string\"\n      },\n      \"lastName\": {\n        \"type\": \"string\"\n      },\n      \"email\": {\n        \"type\": \"string\"\n      },\n      \"schoolId\": {\n        \"type\": \"number\"\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/students/school/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"school",
+								"1"
+							]
+						},
+						"description": "The endpoint retrieves a list of students belonging to a specific school.\n\nThe response is in JSON format and has the following schema:\n\n``` json\n[\n    {\n        \"id\": \"number\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"email\": \"string\",\n        \"schoolId\": \"number\"\n    }\n]\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schools",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cordova 4\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8070/api/v1/schools",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"api",
+								"v1",
+								"schools"
+							]
+						},
+						"description": "The endpoint allows the creation of a new school via an HTTP POST request to the specified URL. The request should include a JSON payload in the raw request body type with the \"name\" and \"email\" fields.\n\n### Request Body\n\n- name (string, required): The name of the school.\n    \n- email (string, required): The email address associated with the school.\n    \n\n### Response\n\nThe response to this request is in the form of a JSON schema, however, the specific schema definition is not available in the response. The response status is 201 (Created) and the Content-Type is text/xml.\n\nPlease note that the JSON schema for the response is not provided in the available information."
+					},
+					"response": []
+				},
+				{
+					"name": "Get List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/api/v1/schools",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"api",
+								"v1",
+								"schools"
+							]
+						},
+						"description": "The `GET` request retrieves a list of schools from the API.\n\n### Response\n\nThe response is a JSON array containing school objects with the following properties:\n\n- `id` (number): The unique identifier of the school.\n    \n- `name` (string): The name of the school.\n    \n- `email` (string): The email address of the school.\n    \n\nExample response:\n\n``` json\n[\n  {\n    \"id\": 0,\n    \"name\": \"\",\n    \"email\": \"\"\n  }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get detail from list student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/api/v1/schools/with-students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"api",
+								"v1",
+								"schools",
+								"with-students",
+								"1"
+							]
+						},
+						"description": "This endpoint retrieves the details of a specific school along with its students.\n\nThe response of this request can be documented as a JSON schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"name\": {\"type\": \"string\"},\n        \"email\": {\"type\": \"string\"},\n        \"students\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"firstName\": {\"type\": \"string\"},\n                    \"lastName\": {\"type\": \"string\"},\n                    \"email\": {\"type\": \"string\"}\n                }\n            }\n        }\n    }\n}\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API-Gateway",
+			"item": [
+				{
+					"name": "Post Students",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"schoolId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8222/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8222",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						},
+						"description": "The endpoint allows the creation of a new student record in the system. The request should be sent to [http://localhost:8222/api/v1/students](http://localhost:8222/api/v1/students) using the HTTP POST method.\n\n### Request Body\n\nThe request body should be in raw format with JSON data, including the following parameters:\n\n- `firstName` (string): The first name of the student.\n    \n- `lastName` (string): The last name of the student.\n    \n- `email` (string): The email address of the student.\n    \n- `schoolId` (string): The ID of the school to which the student belongs.\n    \n\n### Response\n\nThe response to this request has a status code of 201 and a content type of text/xml. However, the response body is null.\n\n### JSON Schema for Response\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {}\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get list Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8222/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8222",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						},
+						"description": "The endpoint retrieves a list of students from the server. The response is a JSON array containing objects with the following properties:\n\n- `id` (number): The unique identifier of the student.\n    \n- `firstName` (string): The first name of the student.\n    \n- `lastName` (string): The last name of the student.\n    \n- `email` (string): The email address of the student.\n    \n- `schoolId` (number): The unique identifier of the school to which the student belongs."
+					},
+					"response": []
+				},
+				{
+					"name": "Post Schools",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cordova 4\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8222/api/v1/schools",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8222",
+							"path": [
+								"api",
+								"v1",
+								"schools"
+							]
+						},
+						"description": "The endpoint allows the creation of a new school using a POST request to the specified URL.\n\n### Request Body\n\n- **name**: (text) The name of the school.\n    \n- **email**: (text) The email address associated with the school.\n    \n\n### Response\n\nThe response of this request is in the form of a JSON schema, which is not available in the provided information."
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Schools",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8222/api/v1/schools",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8222",
+							"path": [
+								"api",
+								"v1",
+								"schools"
+							]
+						},
+						"description": "The endpoint retrieves a list of schools in the system.\n\n### Response\n\nThe response is a JSON array with the following schema:\n\n``` json\n[\n  {\n    \"id\": \"number\",\n    \"name\": \"string\",\n    \"email\": \"string\"\n  }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get detail from list student (Schools)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8222/api/v1/schools/with-students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8222",
+							"path": [
+								"api",
+								"v1",
+								"schools",
+								"with-students",
+								"1"
+							]
+						},
+						"description": "The endpoint retrieves information about a specific school along with its students.\n\n### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"name\": {\n            \"type\": \"string\"\n        },\n        \"email\": {\n            \"type\": \"string\"\n        },\n        \"students\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"firstName\": {\n                        \"type\": \"string\"\n                    },\n                    \"lastName\": {\n                        \"type\": \"string\"\n                    },\n                    \"email\": {\n                        \"type\": \"string\"\n                    }\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
